@@ -23,12 +23,12 @@ public class UserController
 	@Autowired
     private UserService userService;
 
-    @PostMapping
+    
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
 
-    @GetMapping("/{id}")
+    
     public ResponseEntity<User> getUserById(@PathVariable int id) {
         User user = userService.getUserById(id);
         if (user == null) {
@@ -37,12 +37,12 @@ public class UserController
         return ResponseEntity.ok(user);
     }
     
-    @GetMapping
+    
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @PutMapping("/{id}")
+    
     public ResponseEntity<User> updateUser(@PathVariable int id, @RequestBody User userDetails) {
         User updatedUser = userService.updateUser(id, userDetails);
         if (updatedUser == null) {
@@ -51,7 +51,7 @@ public class UserController
         return ResponseEntity.ok(updatedUser);
     }
 
-    @DeleteMapping("/{id}")
+    
     public ResponseEntity<Void> deleteUser(@PathVariable int id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
